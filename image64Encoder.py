@@ -38,6 +38,7 @@
 import base64
 import json
 import requests
+import pyperclip
 
 def send_image_to_api(image_path, completion):
     try:
@@ -58,7 +59,8 @@ def send_image_to_api(image_path, completion):
     # Depuración: Imprimir la URL, los encabezados y el payload
     print(f"Headers: {headers}")
     print(f"URL: {url}")
-    print(f"Payload: {payload[:50]}...")  # Mostrar solo los primeros 20 caracteres del payload
+    print(f"Payload: {payload[:50]}...\n\n")  # Mostrar solo los primeros 20 caracteres del payload
+    pyperclip.copy(payload[:50])
 
     try:
         response = requests.post(url, headers=headers, data=payload)
@@ -79,5 +81,5 @@ def send_image_to_api(image_path, completion):
 def completion(weight):
     print(f"Weight: {weight}")
 
-image_path = "assets/etiqueta.jpg"
+image_path = "assets/etiqueta2.jpg"
 send_image_to_api(image_path, completion)
